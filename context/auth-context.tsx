@@ -6,10 +6,9 @@ import { Hub } from "@aws-amplify/core";  // For event listening
 import {
   signIn,
   signOut,
-  signUp,
   getCurrentUser
 } from "@aws-amplify/auth"; // Gen 2 style
-import amplifyConfig from '../../afol-next/amplify_outputs.json'; // Adjust the path as necessary
+import amplifyConfig from '@/amplify_outputs.json'; // Adjust the path as necessary
 import { useRouter } from "next/navigation";
 
 Amplify.configure(amplifyConfig);
@@ -24,7 +23,7 @@ export interface AuthUser {
 interface AuthContextType {
   user: AuthUser | null;
   signOut: () => Promise<void>;
-  signIn: (username: string, password: string) => Promise<any>;
+  signIn: (username: string, password: string) => Promise<{ isSignedIn: boolean }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

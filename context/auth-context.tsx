@@ -9,7 +9,7 @@ import {
   signUp,
   getCurrentUser
 } from "@aws-amplify/auth"; // Gen 2 style
-import amplifyConfig from '../../afol-next/amplify_outputs.json'; // Adjust the path as necessary
+import amplifyConfig from '@/amplify_outputs.json'; // Adjust the path as necessary
 import { useRouter } from "next/navigation";
 
 Amplify.configure(amplifyConfig);

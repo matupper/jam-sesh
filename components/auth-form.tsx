@@ -8,7 +8,7 @@ import {
 } from "aws-amplify/auth";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
@@ -34,11 +34,15 @@ export function AuthForm() {
         // Sign in complete - maybe redirect or show a success message
         console.log("User is signed in!");
       } else {
-        // Possibly handle multi-factor steps, etc.
+        // Handle other auth steps like MFA if needed
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error("Sign in error:", err);
-      setErrorMessage(`${err.code}: ${err.message}`);
+      if (err instanceof Error) {
+        setErrorMessage(err.message);
+      } else {
+        setErrorMessage("An unknown error occurred");
+      }
     }
   }
 

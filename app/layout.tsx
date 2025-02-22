@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Jost, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/context/auth-context";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -25,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jost.variable} ${robotoMono.variable} antialiased`}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

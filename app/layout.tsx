@@ -3,10 +3,7 @@ import { Jost, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/auth-context";
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-});
+const jost = Jost({ subsets: ["latin"] });
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -54,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${jost.variable} ${robotoMono.variable} antialiased`}>
+    <html lang="en" className={jost.className}>
+      <body className={`${robotoMono.variable} antialiased`}>
         <AuthProvider>
           {children}
         </AuthProvider>

@@ -424,9 +424,15 @@ export function AuthForm() {
           )}
         </CardContent>
       </Card>
-      <div className="font-semibold text-sm text-muted-foreground *:[a]:hover:text-primary text-center text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="https://afol.com/terms-of-service">Terms of Service</a>{" "}
-        and <a href="https://afol.com/privacy-policy">Privacy Policy</a>.
+      <div className="font-semibold text-sm text-muted-foreground text-center text-balance">
+        By clicking continue, you agree to our
+        <a href="/terms-of-service" className="no-underline hover:no-underline">
+          Terms of Service
+        </a>{" "}
+        and{" "}
+        <a href="/privacy-policy" className="no-underline hover:no-underline">
+          Privacy Policy
+        </a>.
       </div>
       {successMessage && (
         <Dialog

@@ -140,3 +140,8 @@
 
     --sidebar-ring: 217.2 91.2% 59.8%}
 }
+
+.lucide-icon {
+  stroke-width: 2;
+  color: red-600;
+}

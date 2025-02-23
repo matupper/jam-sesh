@@ -16,10 +16,29 @@ import {
 } from "@/components/ui/sidebar";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/auth-context";
+import { useEffect, useState } from "react";
+import { getCurrentUser } from "aws-amplify/auth";
 
-export default function Page() {
+export default function DashboardPage() {
   const router = useRouter();
   const { user, signOut } = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getCurrentUser()
+      .then(() => {
+        // User is authenticated
+        setLoading(false);
+      })
+      .catch(() => {
+        // Not authenticated → redirect
+        router.replace("/login");
+      });
+  }, [router]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <SidebarProvider>

@@ -4,15 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
+import React from "react";
 
-export function PlateFooter() {
+interface PlateFooterProps {
+  showButton?: boolean;
+}
+
+export function PlateFooter({ showButton = true }: PlateFooterProps) {
   return (
     <div className="mt-auto flex flex-col items-center gap-8 pt-8 text-center">
-      <Link href="/login">
-        <Button className="bg-red-600 hover:bg-red-500 text-white">
-          Register for early access!
-        </Button>
-      </Link>
+      {showButton && (
+        <Link href="/login">
+          <Button className="bg-red-600 hover:bg-red-500 text-white">
+            Register for early access!
+          </Button>
+        </Link>
+      )}
       <div className="flex flex-col items-center gap-4">
         <p className="text-black font-bold">
           Follow us to get updates on our imminent launch.

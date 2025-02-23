@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { getCurrentUser, fetchAuthSession } from 'aws-amplify/auth'
 import {
   BookOpen,
   Bot,

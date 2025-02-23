@@ -21,7 +21,7 @@ import { getCurrentUser } from "aws-amplify/auth";
 
 export default function SetsPage() {
   const router = useRouter();
-  const { user, signOut } = useAuth();
+  const {} = useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

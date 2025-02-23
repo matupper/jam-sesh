@@ -21,7 +21,7 @@ import { getCurrentUser } from "aws-amplify/auth";
 
 export default function LotsPage() {
   const router = useRouter();
-  const { user, signOut } = useAuth();
+  const {} = useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

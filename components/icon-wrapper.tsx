@@ -1,8 +1,8 @@
 import * as React from "react";
-import { type Icon as LucideIcon, type LucideProps } from "lucide-react";
+import { LucideProps } from "lucide-react";
 
 interface IconWrapperProps extends LucideProps {
-  icon: LucideIcon;
+  icon: React.ComponentType<LucideProps>;
 }
 
 export function IconWrapper({ icon: Icon, ...props }: IconWrapperProps) {

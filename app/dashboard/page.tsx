@@ -1,37 +1,24 @@
 "use client";
-import { AppSidebar } from "@/components/app-sidebar";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/auth-context";
+
+import { PlateHeader } from "@/components/plate-header";
+import { PlateFooter } from "@/components/plate-footer";
+import BrickCanvas from "@/components/brick-canvas";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { getCurrentUser } from "aws-amplify/auth";
 
-export default function DashboardPage() {
+export default function Homepage() {
   const router = useRouter();
-  const {} = useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getCurrentUser()
       .then(() => {
-        // User is authenticated
+        // user is authenticated
         setLoading(false);
       })
       .catch(() => {
-        // Not authenticated → redirect
+        // not authenticated → redirect
         router.replace("/login");
       });
   }, [router]);
@@ -41,37 +28,23 @@ export default function DashboardPage() {
   }
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <section
+      className="flex min-h-screen flex-col py-[70px] 
+                 bg-[url('/images/bkg-light.png')] bg-left-top bg-repeat px-4"
+    >
+      <PlateHeader
+        title="The platform for the brick economy."
+      />
+      <main className="flex-1 flex flex-col h-[80vh]">
+        <BrickCanvas />
+      </main>
+      <h3 className="text-red-600 text-center font-bold">
+        Thank you for your early registration and interest in AFOL.com
+        <br />
+        We&apos;ll reach out by email when you have been selected to access 
+        the platform as a pre-release Beta user.
+      </h3>
+      <PlateFooter showButton={false} />
+    </section>
   );
 }

@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-export default function MyLogo() {
+export default function MyLogoLight() {
   return (
     <Image
-      src="/images/afol-logo.png"
+      src="/images/afol-logo-light.png"
       alt="AFOL Logo"
       width={112}
       height={38}

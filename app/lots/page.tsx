@@ -19,7 +19,7 @@ import { useAuth } from "@/context/auth-context";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
 
-export default function DashboardPage() {
+export default function LotsPage() {
   const router = useRouter();
   const {} = useAuth();
   const [loading, setLoading] = useState(true);

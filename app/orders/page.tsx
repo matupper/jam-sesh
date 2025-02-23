@@ -19,9 +19,9 @@ import { useAuth } from "@/context/auth-context";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
 
-export default function DashboardPage() {
+export default function OrdersPage() {
   const router = useRouter();
-  const {} = useAuth();
+  useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -13,6 +13,7 @@ import {
   Settings2,
   SquareTerminal,
 } from "lucide-react"
+import Link from "next/link"
 
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
@@ -32,12 +33,12 @@ const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: "/avatars/user-avatar.png",
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Dashboard",
+      url: "/dashboard",
       icon: SquareTerminal,
       isActive: true,
       items: [
@@ -176,6 +177,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <nav className="p-4">
+          <ul className="space-y-2">
+            <li>
+              <Link href="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link href="/pieces">Pieces</Link>
+            </li>
+            <li>
+              <Link href="/lots">Lots</Link>
+            </li>
+            <li>
+              <Link href="/sets">Sets</Link>
+            </li>
+            <li>
+              <Link href="/orders">Orders</Link>
+            </li>
+            <li>
+              <a href="https://shop.afol.com" target="_blank" rel="noopener noreferrer">
+                Store
+              </a>
+            </li>
+          </ul>
+        </nav>
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

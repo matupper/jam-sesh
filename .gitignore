@@ -39,6 +39,12 @@ yarn-error.log*
 # Cursor AI
 .cursor/*
 
+# Docker
+.docker/*
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

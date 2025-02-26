@@ -1,4 +1,4 @@
-import MyLogoLight from "@/components/my-logo-light";
+import MyLogo from "@/components/my-logo";
 import Link from "next/link";
 interface PlateHeaderProps {
   title: string;
@@ -9,7 +9,7 @@ export function PlateHeader({ title, subtitle }: PlateHeaderProps) {
   return (
     <div className="flex flex-col items-center text-center gap-6">
       <Link href="/">
-        <MyLogoLight />
+        <MyLogo />
       </Link>
       <h1 className="mb-6 text-2xl font-bold text-pretty lg:text-5xl">
         {title}

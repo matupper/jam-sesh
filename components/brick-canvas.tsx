@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-
-// OPTION A: import from a CDN
-// import * as THREE from "https://unpkg.com/three@latest/build/three.module.js";
-// import { OrbitControls } from "https://unpkg.com/three@latest/examples/jsm/controls/OrbitControls.js";
+import React, { useRef, useEffect, useState } from "react";
 
 // OPTION B: import from your local libs if you downloaded them
 import * as THREE from "three";
 import { OrbitControls } from "@/public/libs/threejs/OrbitControls.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export default function BrickCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [containerHeight, setContainerHeight] = useState<number>(500); // Default height
 
   useEffect(() => {
     if (!containerRef.current || !canvasRef.current) return;
@@ -27,23 +25,65 @@ export default function BrickCanvas() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 3, 6);
+    camera.position.set(0, 3, 8.4);
     camera.lookAt(0, 0.3, 0);
     scene.add(camera);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
+    controls.enableZoom = false;
+
+    let brickModel: THREE.Object3D | null = null;
+
+    const loader = new GLTFLoader();
+    loader.load("/libs/threejs/2x2_Brick.glb", (gltf) => {
+      brickModel = gltf.scene;
+      brickModel.scale.set(5.6, 5.6, 5.6);
+      scene.add(gltf.scene);
+    });
+
+    // Calculate available height based on viewport and container position
+    function calculateAvailableHeight() {
+      if (!containerRef.current) return 500;
+      
+      const viewportHeight = window.innerHeight;
+      const containerTop = containerRef.current.getBoundingClientRect().top;
+      const footerHeight = 200; // Increased from 80 to account for the full footer including "Follow us" section
+      
+      // Calculate height that fits within viewport without causing scroll
+      const availableHeight = viewportHeight - containerTop - footerHeight - 20; // Added 20px buffer
+      
+      // Ensure minimum height
+      return Math.max(availableHeight, 300);
+    }
 
     function onResize() {
+      // Update container height
+      const newHeight = calculateAvailableHeight();
+      setContainerHeight(newHeight);
+      
       const w = container.clientWidth;
       const h = container.clientHeight;
       renderer.setSize(w, h);
       camera.aspect = w / h;
+      
+      // Adjust camera position based on container size
+      const sizeFactor = Math.min(w, h) / 500; // Normalize based on a reference size
+      camera.position.z = 8.4 + (1 - sizeFactor) * 2; // Adjust distance based on size
+      
       camera.updateProjectionMatrix();
+      
+      // Adjust brick scale if needed
+      if (brickModel) {
+        const scale = 5.6 * Math.max(0.8, sizeFactor);
+        brickModel.scale.set(scale, scale, scale);
+      }
     }
+    
     window.addEventListener("resize", onResize);
-    onResize(); // do an initial sizing
+    // Initial sizing
+    onResize();
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -52,31 +92,6 @@ export default function BrickCanvas() {
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
     dirLight.position.set(5, 10, 7);
     scene.add(dirLight);
-
-    // Create a group for the entire brick so we can rotate it as one
-    const blockGroup = new THREE.Group();
-    scene.add(blockGroup);
-
-    // Brick base
-    const baseGeometry = new THREE.BoxGeometry(2, 0.6, 2);
-    const material = new THREE.MeshPhongMaterial({ color: 0xFF0000 });
-    const baseMesh = new THREE.Mesh(baseGeometry, material);
-    baseMesh.position.y = 0.3;
-    blockGroup.add(baseMesh);
-
-    // Studs
-    const studGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.2, 32);
-    const studPositions = [
-      [-0.5, 0.6 / 2 + 0.1, -0.5],
-      [ 0.5, 0.6 / 2 + 0.1, -0.5],
-      [-0.5, 0.6 / 2 + 0.1,  0.5],
-      [ 0.5, 0.6 / 2 + 0.1,  0.5],
-    ];
-    studPositions.forEach(([x, y, z]) => {
-      const studMesh = new THREE.Mesh(studGeometry, material);
-      studMesh.position.set(x, y, z);
-      blockGroup.add(studMesh);
-    });
 
     // Track user interactions and auto-rotate logic
     let autoRotateSpeed = 0;
@@ -95,10 +110,12 @@ export default function BrickCanvas() {
       requestAnimationFrame(animate);
       controls.update();
 
-      // Start ramping up immediately
       autoRotateSpeed += rampRate;
       autoRotateSpeed = Math.min(autoRotateSpeed, maxSpeed);
-      blockGroup.rotation.y += autoRotateSpeed;
+
+      if (brickModel) {
+        brickModel.rotation.y += autoRotateSpeed;
+      }
 
       renderer.render(scene, camera);
     }
@@ -118,7 +135,7 @@ export default function BrickCanvas() {
       ref={containerRef}
       style={{
         width: '100%',
-        height: '540px',
+        height: `${containerHeight}px`,
         position: 'relative'
       }}
     >
@@ -126,7 +143,7 @@ export default function BrickCanvas() {
         ref={canvasRef}
         style={{
           width: '100%',
-          height: '150%',
+          height: '100%',
           display: 'block'
         }}
       />

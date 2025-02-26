@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Import dark theme accessibility improvements */
+@import url('./dark-theme-accessibility.css');
+@import url('./dark-theme-text.css');
 
 @layer base {
   :root {

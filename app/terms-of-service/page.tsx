@@ -3,12 +3,11 @@
 import { PlateHeader } from "@/components/plate-header";
 import { PlateFooter } from "@/components/plate-footer";
 import Link from "next/link";
+import { ThemedContainer } from "@/components/themed-container";
+
 export default function TermsPage() {
   return (
-    <section
-      className="flex min-h-screen flex-col py-[70px] 
-                 bg-[url('/images/bkg-light.png')] bg-left-top bg-repeat px-4"
-    >
+    <ThemedContainer className="container mx-auto py-[35px] px-4">
       <PlateHeader title="Terms & Conditions" />
 
       {/* Full-width "paper" card with actual Terms content */}
@@ -507,7 +506,7 @@ export default function TermsPage() {
           INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
           MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
           NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE
-          ACCURACY OR COMPLETENESS OF THE SITE’S CONTENT OR THE CONTENT OF ANY
+          ACCURACY OR COMPLETENESS OF THE SITE&apos;S CONTENT OR THE CONTENT OF ANY
           WEBSITES LINKED TO THE SITE AND WE WILL ASSUME NO LIABILITY OR
           RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF
           CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY
@@ -557,7 +556,7 @@ export default function TermsPage() {
           You agree to defend, indemnify, and hold us harmless, including our
           subsidiaries, affiliates, and all of our respective officers, agents,
           partners, and employees, from and against any loss, damage, liability,
-          claim, or demand, including reasonable attorneys’ fees and expenses,
+          claim, or demand, including reasonable attorneys&apos; fees and expenses,
           made by any third party due to or arising out of: (1) use of the Site;
           (2) breach of these Terms of Use; (3) any breach of your
           representations and warranties set forth in these Terms of Use; (4)
@@ -640,6 +639,6 @@ export default function TermsPage() {
         <br />
       </div>
       <PlateFooter />
-    </section>
+    </ThemedContainer>
   );
 }

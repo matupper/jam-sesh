@@ -3,13 +3,11 @@
 import { PlateHeader } from "@/components/plate-header";
 import { PlateFooter } from "@/components/plate-footer";
 import Link from "next/link";
+import { ThemedContainer } from "@/components/themed-container";
 
 export default function TermsPage() {
   return (
-    <section
-      className="flex min-h-screen flex-col py-[70px] 
-                 bg-[url('/images/bkg-light.png')] bg-left-top bg-repeat px-4"
-    >
+    <ThemedContainer className="container mx-auto py-[35px] px-4">
       <PlateHeader title="Privacy Policy" />
 
       {/* Full-width "paper" card with actual Terms content */}
@@ -1440,6 +1438,6 @@ export default function TermsPage() {
   <hr className="my-4 border-gray-300" />
 </div>
       <PlateFooter />
-    </section>
+    </ThemedContainer>
   );
 }

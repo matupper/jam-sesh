@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import React from "react";
+import { Facebook, Instagram, Twitter, Youtube, Music } from "lucide-react";
 
 interface PlateFooterProps {
   showButton?: boolean;
@@ -14,7 +14,7 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
   return (
     <div className="mt-auto flex flex-col items-center gap-8 pt-8 text-center">
       {showButton && (
-        <Link href="/login">
+        <Link href="http://app.local.afol.com:4000/login">
           <Button className="bg-red-600 hover:bg-red-500 text-white">
             Register for early access!
           </Button>
@@ -30,13 +30,11 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ variant: "outline" }), "group px-3")}
+            aria-label="Follow us on X (Twitter)"
           >
-            <Image
-              src="/images/logo-x.png"
-              alt="X"
-              width={24}
-              height={24}
-              className="saturate-0 transition-all group-hover:saturate-100"
+            <Twitter 
+              size={24} 
+              className="text-gray-500 transition-all group-hover:text-blue-400" 
             />
           </a>
           <a
@@ -44,13 +42,11 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ variant: "outline" }), "group px-3")}
+            aria-label="Follow us on Facebook"
           >
-            <Image
-              src="/images/logo-facebook.png"
-              alt="Facebook"
-              width={24}
-              height={24}
-              className="saturate-0 transition-all group-hover:saturate-100"
+            <Facebook 
+              size={24} 
+              className="text-gray-500 transition-all group-hover:text-blue-600" 
             />
           </a>
           <a
@@ -58,13 +54,11 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ variant: "outline" }), "group px-3")}
+            aria-label="Follow us on Instagram"
           >
-            <Image
-              src="/images/logo-instagram.png"
-              alt="Instagram"
-              width={24}
-              height={24}
-              className="saturate-0 transition-all group-hover:saturate-100"
+            <Instagram 
+              size={24} 
+              className="text-gray-500 transition-all group-hover:text-pink-500" 
             />
           </a>
           <a
@@ -72,13 +66,11 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ variant: "outline" }), "group px-3")}
+            aria-label="Follow us on TikTok"
           >
-            <Image
-              src="/images/logo-tiktok.png"
-              alt="TikTok"
-              width={32}
-              height={32}
-              className="saturate-0 transition-all group-hover:saturate-100"
+            <Music 
+              size={24} 
+              className="text-gray-500 transition-all group-hover:text-black" 
             />
           </a>
           <a
@@ -86,13 +78,11 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(buttonVariants({ variant: "outline" }), "group px-3")}
+            aria-label="Subscribe to our YouTube channel"
           >
-            <Image
-              src="/images/logo-youtube.png"
-              alt="YouTube"
-              width={32}
-              height={32}
-              className="saturate-0 transition-all group-hover:saturate-100"
+            <Youtube 
+              size={24} 
+              className="text-gray-500 transition-all group-hover:text-red-600" 
             />
           </a>
         </div>

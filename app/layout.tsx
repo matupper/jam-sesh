@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Jost, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/auth-context";
+import { ThemeProvider } from "@/context/theme-context";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -54,7 +56,12 @@ export default function RootLayout({
     <html lang="en" className={jost.className}>
       <body className={`${robotoMono.variable} antialiased`}>
         <AuthProvider>
-          {children}
+          <ThemeProvider>
+            <div className="fixed top-4 right-4 z-50">
+              <ThemeSwitcher />
+            </div>
+            {children}
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

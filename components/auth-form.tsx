@@ -425,7 +425,7 @@ export function AuthForm() {
         </CardContent>
       </Card>
       <div className="font-semibold text-sm text-muted-foreground text-center text-balance">
-        By clicking continue, you agree to our
+        By clicking continue, you agree to our<br />
         <a href="/terms-of-service" className="no-underline hover:no-underline">
           Terms of Service
         </a>{" "}

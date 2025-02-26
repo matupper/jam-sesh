@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signOutHandler = async () => {
     await signOut();
-    router.push("/");
+    router.push("/login");
   };
 
   const signInHandler = async (email: string, password: string) => {

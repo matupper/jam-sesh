@@ -55,7 +55,7 @@
 /* Form elements and labels with better contrast */
 .dark label,
 .dark legend {
-  color: #F0F0F0;
+  color: #d4d4d8; /* zinc-300 for consistency */
   font-weight: 500;
 }
 
@@ -75,7 +75,7 @@
 /* Ensure good contrast for buttons with text */
 .dark button:not([class*="bg-"]):not([class*="text-"]),
 .dark .button:not([class*="bg-"]):not([class*="text-"]) {
-  color: #F0F0F0;
+  color: #d4d4d8; /* zinc-300 for consistency */
 }
 
 /* Better readability for smaller text */

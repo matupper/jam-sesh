@@ -37,7 +37,7 @@ export default function BrickCanvas() {
     let brickModel: THREE.Object3D | null = null;
 
     const loader = new GLTFLoader();
-    loader.load("/libs/threejs/2x2_Brick.glb", (gltf) => {
+    loader.load("/libs/threejs/2x2_brick.glb", (gltf) => {
       brickModel = gltf.scene;
       brickModel.scale.set(5.6, 5.6, 5.6);
       scene.add(gltf.scene);

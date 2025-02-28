@@ -103,6 +103,20 @@
   font-weight: bold !important;
 }
 
+/* Fix button text color on hover in dark mode */
+.dark button:hover,
+.dark .button:hover,
+.dark [role="button"]:hover {
+  color: #d4d4d8 !important; /* zinc-300 for text on hover */
+}
+
+/* Specific fix for black buttons */
+.dark button.bg-black:hover,
+.dark .button.bg-black:hover,
+.dark [role="button"].bg-black:hover {
+  color: #d4d4d8 !important; /* zinc-300 for text on hover */
+}
+
 /* Error states with better visual cues */
 .dark .input-error,
 .dark .has-error {

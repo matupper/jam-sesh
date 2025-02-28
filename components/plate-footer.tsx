@@ -14,7 +14,7 @@ export function PlateFooter({ showButton = true }: PlateFooterProps) {
   return (
     <div className="mt-auto flex flex-col items-center gap-8 pt-8 text-center">
       {showButton && (
-        <Link href="http://app.local.afol.com:4000/login">
+        <Link href="http://app.afol.com/login">
           <Button className="bg-red-600 hover:bg-red-500 text-white">
             Register for early access!
           </Button>

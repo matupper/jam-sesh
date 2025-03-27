@@ -32,14 +32,14 @@
 
 /* Make links more visually distinct */
 .dark a:not(.btn):not(.nav-link):not([role="button"]) {
-  color: #60A5FA; /* Bright blue that works well in dark mode */
+  color: #ff9900; /* Brighter orange for links */
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
   transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
 }
 
 .dark a:not(.btn):not(.nav-link):not([role="button"]):hover {
-  color: #93C5FD;
+  color: #ffad33; /* Lighter version for hover */
   text-decoration-thickness: 2px;
 }
 

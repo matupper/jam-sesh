@@ -1,0 +1,125 @@
+/* Dark Theme Accessibility Improvements */
+
+/* 1. Better Text Contrast */
+.dark {
+  --foreground: 0 0% 94%; /* Slightly less bright than pure white */
+  color: #d4d4d8; /* zinc-300 for better contrast in dark mode */
+}
+
+.dark .dark-theme-text {
+  color: #d4d4d8; /* Changed from #F0F0F0 to zinc-300 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. Improved Focus Indicators */
+.dark *:focus-visible {
+  outline: 2px solid hsl(var(--sidebar-primary));
+  outline-offset: 2px;
+}
+
+/* Remove outline on main menu items container */
+.dark .sidebar-menu-button {
+  outline: none !important;
+}
+
+/* 3. Enhanced UI Element Borders */
+.dark .card,
+.dark .input,
+.dark button:not(.sidebar-menu-button),
+.dark select,
+.dark textarea {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 4. Better Hover States */
+.dark a:not(.sidebar-menu-button):hover,
+.dark button:not(.sidebar-menu-button):hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+/* 5. Dark Mode-Specific Box Shadows */
+.dark .card,
+.dark .dropdown-menu {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 
+              0 1px 3px rgba(0, 0, 0, 0.2), 
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* 6. Color Blindness Considerations */
+.dark .error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 7. Reduce Visual Noise */
+.dark [class*="bg-[url"] {
+  opacity: 1; /* Changed from 0.8 to 1 to remove the foggy haze effect */
+}
+
+/* 8. Adjust Image Brightness */
+.dark img:not([class*="logo"]) {
+  filter: brightness(0.9);
+}
+
+/* Make sidebar icons white in dark mode */
+.dark .sidebar svg,
+.dark [class*="sidebar"] svg {
+  color: white !important;
+}
+
+/* Additional improvements */
+/* Better contrast for links */
+.dark a {
+  color: hsl(210, 100%, 70%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Make terms and privacy links match text color */
+.dark .text-muted-foreground a,
+.light .text-muted-foreground a {
+  color: inherit !important;
+}
+
+/* Style the "Thank you" text in the footer */
+.light p.text-red-600 {
+  color: #DC2626 !important; /* red-600 in light mode */
+}
+
+.dark p.text-red-600 {
+  color: #EAB308 !important; /* yellow-500 in dark mode */
+}
+
+/* Make menu section titles yellow in dark mode */
+.dark [data-sidebar="group-label"].text-red-600,
+.dark .text-red-600[data-sidebar="group-label"] {
+  color: #EAB308 !important; /* yellow-500 in dark mode */
+}
+
+/* Ensure PlateFooter text is bolded in dark mode */
+.dark .mt-auto.flex.flex-col.items-center.gap-8.pt-8.text-center p {
+  font-weight: bold !important;
+}
+
+/* Fix button text color on hover in dark mode */
+.dark button:hover,
+.dark .button:hover,
+.dark [role="button"]:hover {
+  color: #d4d4d8 !important; /* zinc-300 for text on hover */
+}
+
+/* Specific fix for black buttons */
+.dark button.bg-black:hover,
+.dark .button.bg-black:hover,
+.dark [role="button"].bg-black:hover {
+  color: #d4d4d8 !important; /* zinc-300 for text on hover */
+}
+
+/* Error states with better visual cues */
+.dark .input-error,
+.dark .has-error {
+  border-color: hsl(0, 90%, 65%) !important;
+  border-width: 2px;
+} 

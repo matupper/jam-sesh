@@ -1,23 +1,78 @@
-# jam-sesh
+# Jam Sesh
 
-Project description goes here.
+**Connecting local musicians, one jam at a time.**
 
-## Setup
+---
 
-1. Install dependencies:
+## Features
+
+- Location-based musician discovery
+- Forum-style posts and profiles
+- Expo Go for mobile demo, Amplify for web hosting
+- AWS-powered backend (optional)
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm (v9+)
+- AWS CLI (for deployment)
+- Amplify CLI (`npm install -g @aws-amplify/cli`)
+
+### Installation
+
 ```bash
+git clone https://github.com/matupper/jam-sesh.git
+cd jam-sesh
 npm install
 ```
 
-2. Configure AWS Amplify:
-```bash
-amplify configure
-```
+### Running Locally
 
-## Development
+- **Expo Go (mobile):**
+  ```bash
+  npm start
+  ```
+  Scan the QR code with Expo Go app.
 
-Add development instructions here.
+- **Web:**
+  ```bash
+  npm run web
+  ```
 
-## Documentation
+---
 
-See the `docs/` directory for detailed documentation.
+## Deployment
+
+- **Production build for web:**
+  ```bash
+  npx expo export:web
+  ```
+- **Deploy to AWS Amplify:**  
+  Push to the `main` branch (or your deployment branch).
+
+---
+
+## Project Structure
+
+- `src/` - App source code
+- `docs/` - Project documentation/specs
+- `web-build/` - Production web build (for Amplify)
+- `amplify.yml` - Amplify build settings
+
+---
+
+## Configuration
+
+- AWS credentials: stored in `~/.aws/credentials` (never commit these!)
+- Environment variables: (add details if needed)
+
+---
+
+## Contact
+
+- Matias Tupper ([email](matias.a.tupper@gmail.com))
+- Tanish Hupare 

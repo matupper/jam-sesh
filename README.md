@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/jamsesh-banner.png" alt="Jam Sesh Banner" width="100%" />
+  <img src="assets/JamSesh Banner v1.png" alt="Jam Sesh Banner" width="100%" />
 </p>
 
 **Connecting local musicians, one jam at a time.**

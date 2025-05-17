@@ -3,16 +3,27 @@
 </p>
 
 **Connecting local musicians, one jam at a time.**
-
 ---
 
-## Features
+# About Jam Sesh
+Jam Sesh is a community-driven platform designed to bring together local musicians, bands, venues, and fans in one easy-to-use space. Whether you're looking for a bassist, booking your next gig, or promoting a house show, Jam Sesh helps you connect with your city's music scene — no hassle, no noise.
 
-- Location-based musician discovery
-- Forum-style posts and profiles
-- Expo Go for mobile demo, Amplify for web hosting
-- AWS-powered backend (optional)
+## Key Features
 
+### 🎸 Find Local Musicians
+Looking to complete your band lineup? Instead of posting flyers or sending endless messages, use Jam Sesh to find guitarists, drummers, vocalists, and more nearby. Location-based posts make it simple to discover and connect with artists in your town.
+
+### 🎵 Organize Gigs with Ease  
+Skip the back-and-forth DMs. Bands and venues can quickly coordinate show dates, share availability, and fill open slots — all through Jam Sesh's streamlined local event board.
+
+### 📢 Promote Your Music and Events
+Say goodbye to scattered posts and low visibility. Jam Sesh acts as a digital bulletin board where you can promote house shows, share new tracks, and post event flyers directly to your local music community.
+
+### 🌟 Build a Thriving Local Scene
+More than just a tool for booking or recruiting, Jam Sesh helps you plug into your city's underground music network. Whether you're new or a long-time local, this is your hub to collaborate, discover new talent, and grow your music scene.
+
+### 💬 Real-Time, Forum-Style Community
+Inspired by platforms like Reddit and Yik Yak, Jam Sesh delivers real-time, location-tied posts in a forum-style feed. No algorithmic filters — everyone sees every post equally, fostering genuine connections based on shared geography, not follower counts.
 ---
 
 ## Getting Started

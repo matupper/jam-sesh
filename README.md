@@ -23,7 +23,8 @@ Say goodbye to scattered posts and low visibility. Jam Sesh acts as a digital bu
 More than just a tool for booking or recruiting, Jam Sesh helps you plug into your city's underground music network. Whether you're new or a long-time local, this is your hub to collaborate, discover new talent, and grow your music scene.
 
 ### 💬 Real-Time, Forum-Style Community
-Inspired by platforms like Reddit and Yik Yak, Jam Sesh delivers real-time, location-tied posts in a forum-style feed. No algorithmic filters — everyone sees every post equally, fostering genuine connections based on shared geography, not follower counts.
+Inspired by platforms like Reddit and Yik Yak, Jam Sesh delivers real-time, location-tied posts in a forum-style feed. No algorithmic filters — everyone sees every post equally, fostering genuine connections based on shared geography, not follower counts
+
 ---
 
 ## Getting Started

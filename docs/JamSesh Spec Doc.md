@@ -150,21 +150,45 @@ Inspired by MySpace, Jam Sesh aims to give users the ability to deeply personali
 
 ### **Design Inspiration**
 
-\- **YikYak** — location-based, community-centered feed
+- **YikYak** — location-based, community-centered feed
 
-\- **Reddit** — structured discussion, categorized posts
+- **Reddit** — structured discussion, categorized posts
 
-\- **Bandcamp** — clean indie-focused presentation
+- **Bandcamp** — clean indie-focused presentation
 
-\- **MySpace** — nostalgic and customizable user spaces
+- **MySpace** — nostalgic and customizable user spaces
+
+### **Color Scheme**
+
+Our primary color is a bold purple: **#3d00b6**. This will be used as the go-to accent and brand color throughout the app. The overall palette will still feature muted neons, textured blacks, and warm grunge tones, but #3d00b6 serves as the core of our visual identity.
+
+Our secondary color is a deep, grayish purple: **#1a1333**. This color is primarily used for backgrounds and empty space, providing a dark, subtle foundation that allows the primary purple and other accent colors to stand out. #1a1333 was chosen for its strong contrast, muted character, and ability to evoke the "textured blacks" and underground vibe described in our design vision.
+
+#### **Jam Sesh UI Color Palette**
+
+| Purpose         | Color Name      | Hex      | Description                                      |
+|-----------------|----------------|----------|--------------------------------------------------|
+| Primary         | Purple          | #3d00b6  | Main accent and brand color                      |
+| Secondary       | Dark Purple     | #1a1333  | Backgrounds, empty space                         |
+| Accent 1        | Electric Teal   | #00ffd0  | CTAs, highlights, energetic accents              |
+| Accent 2        | Neon Pink       | #ff3ec8  | Playful highlights, buttons, or links            |
+| Accent 3        | Warm Gold       | #ffd600  | Notifications, warnings, warm highlights         |
+| Accent 4        | Sky Blue        | #3ecfff  | Info, secondary actions, cool contrast           |
+| Neutral 1       | Off-White       | #f5f5fa  | Text, cards, surfaces on dark backgrounds        |
+| Neutral 2       | Muted Gray      | #b3b3c6  | Secondary text, dividers, subtle UI elements     |
+
+**Usage Notes:**
+- Accent colors are for buttons, links, highlights, and notifications.
+- Neutrals are for backgrounds, cards, and text to maintain readability.
+- Always check color contrast for accessibility, especially for text on colored backgrounds.
 
 ### **Accessibility Considerations**
 
-\- Strong contrast and readable typography
+- Strong contrast and readable typography
 
-\- Optional dark mode
+- Optional dark mode
 
-\- Easy navigation, keyboard-friendly UI
+- Easy navigation, keyboard-friendly UI
 
 ### **Responsive Design**
 

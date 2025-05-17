@@ -1,4 +1,6 @@
-# Jam Sesh
+<p align="center">
+  <img src="assets/jamsesh-banner.png" alt="Jam Sesh Banner" width="100%" />
+</p>
 
 **Connecting local musicians, one jam at a time.**
 

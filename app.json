@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.jam-sesh"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,4 +26,4 @@
       "favicon": "./assets/favicon.png"
     }
   }
-} 
+}

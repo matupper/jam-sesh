@@ -5,11 +5,26 @@ Amplify.configure(awsconfig);
 
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './src/navigation/TabNavigator';
+import { Platform } from 'react-native';
 
 export default function App() {
+  let Authenticator: any, AuthProvider: any;
+  if (Platform.OS === 'web') {
+    Authenticator = require('@aws-amplify/ui-react').Authenticator;
+    AuthProvider = require('@aws-amplify/ui-react').Authenticator.Provider;
+    require('@aws-amplify/ui-react/styles.css');
+  } else {
+    Authenticator = require('@aws-amplify/ui-react-native').Authenticator;
+    AuthProvider = require('@aws-amplify/ui-react-native').Authenticator.Provider;
+  }
+
   return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
+    <AuthProvider>
+      <Authenticator>
+        <NavigationContainer>
+          <TabNavigator />
+        </NavigationContainer>
+      </Authenticator>
+    </AuthProvider>
   );
 } 

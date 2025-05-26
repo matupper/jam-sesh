@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports'; // adjust the path if needed
 
@@ -5,9 +6,11 @@ Amplify.configure(awsconfig);
 
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './src/navigation/TabNavigator';
-import { Platform } from 'react-native';
+import { Platform, Button, View } from 'react-native';
 
 export default function App() {
+  const [isGuest, setIsGuest] = useState(false);
+
   let Authenticator: any, AuthProvider: any;
   if (Platform.OS === 'web') {
     Authenticator = require('@aws-amplify/ui-react').Authenticator;
@@ -18,13 +21,44 @@ export default function App() {
     AuthProvider = require('@aws-amplify/ui-react-native').Authenticator.Provider;
   }
 
-  return (
-    <AuthProvider>
-      <Authenticator>
-        <NavigationContainer>
-          <TabNavigator />
-        </NavigationContainer>
-      </Authenticator>
-    </AuthProvider>
-  );
+  if (isGuest) {
+    return (
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    );
+  }
+
+  if (Platform.OS === 'web') {
+    return (
+      <AuthProvider>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Authenticator>
+            <NavigationContainer>
+              <TabNavigator />
+            </NavigationContainer>
+          </Authenticator>
+          <button
+            style={{ marginTop: 20, padding: 10, fontSize: 16 }}
+            onClick={() => setIsGuest(true)}
+          >
+            Continue as Guest
+          </button>
+        </div>
+      </AuthProvider>
+    );
+  } else {
+    return (
+      <AuthProvider>
+        <View style={{ flex: 1 }}>
+          <Button title="Continue as Guest" onPress={() => setIsGuest(true)} />
+          <Authenticator>
+            <NavigationContainer>
+              <TabNavigator />
+            </NavigationContainer>
+          </Authenticator>
+        </View>
+      </AuthProvider>
+    );
+  }
 } 

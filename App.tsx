@@ -1,64 +1,23 @@
-import React, { useState } from 'react';
-import { Amplify } from 'aws-amplify';
-import awsconfig from './src/aws-exports'; // adjust the path if needed
-
-Amplify.configure(awsconfig);
-
-import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './src/navigation/TabNavigator';
-import { Platform, Button, View } from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator';
+import * as Font from 'expo-font';
+import { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import 'react-native-url-polyfill/auto';
 
 export default function App() {
-  const [isGuest, setIsGuest] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  let Authenticator: any, AuthProvider: any;
-  if (Platform.OS === 'web') {
-    Authenticator = require('@aws-amplify/ui-react').Authenticator;
-    AuthProvider = require('@aws-amplify/ui-react').Authenticator.Provider;
-    require('@aws-amplify/ui-react/styles.css');
-  } else {
-    Authenticator = require('@aws-amplify/ui-react-native').Authenticator;
-    AuthProvider = require('@aws-amplify/ui-react-native').Authenticator.Provider;
+  useEffect(() => {
+    Font.loadAsync({
+      'RussoOne': require('./assets/fonts/RussoOne-Regular.ttf'),
+      'SpaceGroteskBold': require('./assets/fonts/SpaceGrotesk-Bold.ttf'),
+      'SpaceGroteskMed': require('./assets/fonts/SpaceGrotesk-Medium.ttf')
+    }).then(() => setFontsLoaded(true));
+  }, []);
+
+  if (!fontsLoaded) {
+    return <View><Text>Loading fonts...</Text></View>;
   }
 
-  if (isGuest) {
-    return (
-      <NavigationContainer>
-        <TabNavigator />
-      </NavigationContainer>
-    );
-  }
-
-  if (Platform.OS === 'web') {
-    return (
-      <AuthProvider>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Authenticator>
-            <NavigationContainer>
-              <TabNavigator />
-            </NavigationContainer>
-          </Authenticator>
-          <button
-            style={{ marginTop: 20, padding: 10, fontSize: 16 }}
-            onClick={() => setIsGuest(true)}
-          >
-            Continue as Guest
-          </button>
-        </div>
-      </AuthProvider>
-    );
-  } else {
-    return (
-      <AuthProvider>
-        <View style={{ flex: 1 }}>
-          <Button title="Continue as Guest" onPress={() => setIsGuest(true)} />
-          <Authenticator>
-            <NavigationContainer>
-              <TabNavigator />
-            </NavigationContainer>
-          </Authenticator>
-        </View>
-      </AuthProvider>
-    );
-  }
-} 
+  return <AppNavigator />;
+}

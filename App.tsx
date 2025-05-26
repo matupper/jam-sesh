@@ -7,6 +7,7 @@ Amplify.configure(awsconfig);
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './src/navigation/TabNavigator';
 import { Platform, Button, View } from 'react-native';
+import ProfileSetup from './src/pages/ProfileSetup';
 
 export default function App() {
   const [isGuest, setIsGuest] = useState(false);
@@ -34,9 +35,11 @@ export default function App() {
       <AuthProvider>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Authenticator>
-            <NavigationContainer>
-              <TabNavigator />
-            </NavigationContainer>
+            <ProfileSetup>
+              <NavigationContainer>
+                <TabNavigator />
+              </NavigationContainer>
+            </ProfileSetup>
           </Authenticator>
           <button
             style={{ marginTop: 20, padding: 10, fontSize: 16 }}
@@ -52,11 +55,13 @@ export default function App() {
       <AuthProvider>
         <View style={{ flex: 1 }}>
           <Button title="Continue as Guest" onPress={() => setIsGuest(true)} />
-          <Authenticator>
-            <NavigationContainer>
-              <TabNavigator />
-            </NavigationContainer>
-          </Authenticator>
+          <ProfileSetup>
+            <Authenticator>
+              <NavigationContainer>
+                <TabNavigator />
+              </NavigationContainer>
+            </Authenticator>
+          </ProfileSetup>
         </View>
       </AuthProvider>
     );

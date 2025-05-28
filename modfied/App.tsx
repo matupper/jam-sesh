@@ -1,4 +1,4 @@
-import AppNavigator from './src/navigation/appNavigator';
+import AppNavigator from './navigation/appNavigatior';
 import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';

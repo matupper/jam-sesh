@@ -5,8 +5,27 @@ import CustomForm from '../Components/Forms/FormInput';
 import { FormData, FormField } from '../Types/types';
 import supabase from '@config/supabase';
 import { callEmailVerifyFunction } from '@hooks/callEmailVerifyFunction';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const SignUpScreen = ({ navigation }) => {
+type RootStackParamList = {
+  Welcome: undefined;
+  Login: undefined;
+  SignUp: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'SignUp'>;
+
+const SignUpScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
   const { control, handleSubmit, watch } = useForm<FormData>({
     mode: 'onChange',
     defaultValues: {
@@ -94,51 +113,111 @@ const SignUpScreen = ({ navigation }) => {
   ];
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Sign Up</Text>
-      <CustomForm
-        fields={formFields}
-        control={control}
-        onSubmit={handleSubmit(handleFormSubmit)}
-        submitButtonText={loading ? "Signing up..." : "Sign Up"}
-        disabled={loading || !isPasswordMatch}
-      />
-      {!isPasswordMatch && (
-        <Text style={styles.errorText}>Passwords do not match!</Text>
-      )}
-      <Text style={styles.smallText}>
-        Already have an account?{' '}
-        <Text 
-          onPress={() => navigation.navigate('SignInScreen')} 
-          style={styles.smallTextBlue}
-        >
-          Sign In
-        </Text>
-      </Text>
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Sign Up</Text>
+          
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={watch('email')}
+            onChangeText={(value) => set(control, 'email', value)}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            value={watch('password')}
+            onChangeText={(value) => set(control, 'password', value)}
+            secureTextEntry
+          />
+
+          <TextInput
+            style={styles.input}
+            placeholder="Repeat Password"
+            value={watch('repeatPassword')}
+            onChangeText={(value) => set(control, 'repeatPassword', value)}
+            secureTextEntry
+          />
+
+          <TouchableOpacity style={styles.button} onPress={handleSubmit(handleFormSubmit)}>
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
+
+          {!isPasswordMatch && (
+            <Text style={styles.errorText}>Passwords do not match!</Text>
+          )}
+
+          <TouchableOpacity
+            style={styles.linkButton}
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.linkText}>
+              Already have an account? <Text style={styles.link}>Login</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: '#fff',
   },
-  smallText: {
-    fontSize: 14,
-    marginTop: 8,
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  formContainer: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontFamily: 'RussoOne',
+    color: '#333',
+    marginBottom: 30,
     textAlign: 'center',
   },
-  smallTextBlue: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+  input: {
+    backgroundColor: '#f5f5f5',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15,
+    fontFamily: 'SpaceGroteskMed',
   },
-  header: {
-    fontSize: 24,
-    fontWeight: '500',
-    marginBottom: 16,
+  button: {
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
     textAlign: 'center',
+    fontSize: 16,
+    fontFamily: 'SpaceGroteskBold',
+  },
+  linkButton: {
+    marginTop: 20,
+  },
+  linkText: {
+    textAlign: 'center',
+    color: '#666',
+    fontFamily: 'SpaceGroteskMed',
+  },
+  link: {
+    color: '#007AFF',
+    fontFamily: 'SpaceGroteskBold',
   },
   errorText: {
     color: 'red',
